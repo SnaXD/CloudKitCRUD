@@ -11,6 +11,9 @@
 		AB82BCE727EC7A44008BB319 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB82BCE627EC7A44008BB319 /* ContentView.swift */; };
 		AB82BCE927EC7A46008BB319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB82BCE827EC7A46008BB319 /* Assets.xcassets */; };
 		AB82BCEC27EC7A46008BB319 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB82BCEB27EC7A46008BB319 /* Preview Assets.xcassets */; };
+		AB82BCF527EC7A90008BB319 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB82BCF427EC7A90008BB319 /* CloudKit.framework */; };
+		AB82BCF827EC7C1E008BB319 /* CloudkitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB82BCF727EC7C1E008BB319 /* CloudkitUser.swift */; };
+		ABCAA21827EDDB9200F6BCED /* CloudKitCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCAA21727EDDB9200F6BCED /* CloudKitCRUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,10 @@
 		AB82BCE627EC7A44008BB319 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB82BCE827EC7A46008BB319 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB82BCEB27EC7A46008BB319 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AB82BCF227EC7A62008BB319 /* CloudKitTesting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudKitTesting.entitlements; sourceTree = "<group>"; };
+		AB82BCF427EC7A90008BB319 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		AB82BCF727EC7C1E008BB319 /* CloudkitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudkitUser.swift; sourceTree = "<group>"; };
+		ABCAA21727EDDB9200F6BCED /* CloudKitCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB82BCF527EC7A90008BB319 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +45,7 @@
 			children = (
 				AB82BCE327EC7A44008BB319 /* CloudKitTesting */,
 				AB82BCE227EC7A44008BB319 /* Products */,
+				AB82BCF327EC7A90008BB319 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,6 +60,8 @@
 		AB82BCE327EC7A44008BB319 /* CloudKitTesting */ = {
 			isa = PBXGroup;
 			children = (
+				AB82BCF627EC7C0C008BB319 /* Cloudkit */,
+				AB82BCF227EC7A62008BB319 /* CloudKitTesting.entitlements */,
 				AB82BCE427EC7A44008BB319 /* CloudKitTestingApp.swift */,
 				AB82BCE627EC7A44008BB319 /* ContentView.swift */,
 				AB82BCE827EC7A46008BB319 /* Assets.xcassets */,
@@ -65,6 +76,23 @@
 				AB82BCEB27EC7A46008BB319 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AB82BCF327EC7A90008BB319 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB82BCF427EC7A90008BB319 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB82BCF627EC7C0C008BB319 /* Cloudkit */ = {
+			isa = PBXGroup;
+			children = (
+				AB82BCF727EC7C1E008BB319 /* CloudkitUser.swift */,
+				ABCAA21727EDDB9200F6BCED /* CloudKitCRUD.swift */,
+			);
+			path = Cloudkit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB82BCF827EC7C1E008BB319 /* CloudkitUser.swift in Sources */,
 				AB82BCE727EC7A44008BB319 /* ContentView.swift in Sources */,
+				ABCAA21827EDDB9200F6BCED /* CloudKitCRUD.swift in Sources */,
 				AB82BCE527EC7A44008BB319 /* CloudKitTestingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CloudKitTesting/CloudKitTesting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CloudKitTesting/Preview Content\"";
@@ -295,6 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CloudKitTesting/CloudKitTesting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CloudKitTesting/Preview Content\"";
