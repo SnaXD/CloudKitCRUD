@@ -10,6 +10,7 @@ import CloudKit
 
 struct fruitModel: Hashable{
     let name: String
+    let imageURL: URL?
     let record: CKRecord
 }
 
@@ -28,7 +29,20 @@ class cloudkitCRUDViewModel: ObservableObject{
     func addItem(name: String){
         let newFruit = CKRecord(recordType: "Fruits")
         newFruit["name"] = name
-        saveItem(record: newFruit)
+        
+        guard let image = UIImage(named: "251239997_10226265072154641_4626950811026994616_n"), let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("fruitImage.jgp"), let data = image.jpegData(compressionQuality: 1.0) else {return }
+        
+        do {
+            try data.write(to: url)
+            let asset = CKAsset(fileURL: url)
+             newFruit["image"] = asset
+            
+            saveItem(record: newFruit)
+        } catch let error {
+            print(error)
+        }
+       
+        
     }
     func fetchItems(){
         let predicate = NSPredicate(value: true)
@@ -45,7 +59,9 @@ class cloudkitCRUDViewModel: ObservableObject{
             switch returnedResult{
             case .success(let record):
                 guard let name = record["name"] as? String else { return }
-                returnedItems.append(fruitModel(name: name, record: record))
+                let imageAsset = record["image"] as? CKAsset
+                let imageURL = imageAsset?.fileURL
+                returnedItems.append(fruitModel(name: name, imageURL: imageURL, record: record))
             case .failure(let error):
                 print("error: \(error)")
             }
@@ -99,7 +115,14 @@ struct CloudKitCRUD: View {
             }
             List{
                 ForEach(vm.fruits, id: \.self) { fruit in
+                    HStack{
                     Text(fruit.name)
+                        if let url = fruit.imageURL, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                        }
+                    }
                         .onTapGesture {
                             vm.updateItems(fruit: fruit)
                         }
